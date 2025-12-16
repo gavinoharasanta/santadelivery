@@ -14,7 +14,6 @@ namespace Family_Aware_Delivery_Library
 
         public bool IsCompleted { get; set; }
 
-
         public FamilyToySack(Order order)
         {
             Order = order;
@@ -23,6 +22,5 @@ namespace Family_Aware_Delivery_Library
         {
             Presents.Add(present);
         }
-        
     }
 }

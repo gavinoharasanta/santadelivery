@@ -7,7 +7,6 @@ namespace Family_Aware_Delivery_Library
 {
     public class TheClauses
     {
-
         BlockingCollection<Present> presentsToPack = new BlockingCollection<Present>();
         BlockingCollection<Elf> elves = new BlockingCollection<Elf>();
 
@@ -42,9 +41,6 @@ namespace Family_Aware_Delivery_Library
             //"Wunorse",
             //"Openslae"
         };
-
-
-
 
         public TheClauses(int noOfToyMachines)
         {
@@ -84,25 +80,7 @@ namespace Family_Aware_Delivery_Library
             {
                 Console.WriteLine($"presentsToPack.Take() {presentToPack.PresentType}{presentToPack.OrderId} {Thread.CurrentThread.ManagedThreadId}");
 
-                Console.WriteLine("testx");
-                //try
-                //{
-                //    presentToPack = presentsToPack.Take();
-                //    Console.WriteLine($"presentsToPack.Take() {presentToPack.PresentType}{presentToPack.OrderId} {Thread.CurrentThread.ManagedThreadId}");
-                //    //finished.AddCount();
 
-                //}
-                //catch (InvalidOperationException)
-                //{
-                //    //Console.WriteLine("Adding was completed!");
-                //    break;
-                //}
-                //Console.WriteLine($"Present To Pack {presentToPack.PresentType}{presentToPack.OrderId}");
-                //Thread.Sleep(5000);
-
-
-
-                //Elf elf = elves.Take();
                 bool waitingForElf = true;
 
                 while (waitingForElf)
@@ -113,9 +91,6 @@ namespace Family_Aware_Delivery_Library
 
                         waitingForElf = false;
                         Console.WriteLine($"*************************{elf.Name}");
-                        ////elf.Present = presentToPack;
-
-                        ////ThreadPool.QueueUserWorkItem(new WaitCallback(elf.DeliverPresentToSleigh), presentToPack);
 
                         var resetEvent = new ManualResetEvent(false);
                         ThreadPool.QueueUserWorkItem(arg =>
@@ -140,37 +115,11 @@ namespace Family_Aware_Delivery_Library
                 }
 
                 i++;
-                //Console.WriteLine($"WaitingForElf = {waitingForElf.ToString()}");
-
-
-
-
-                //ThreadPool.QueueUserWorkItem((state) =>
-                //                              {
-                //                                  try
-                //                                  {
-                //                                      elf.DeliverPresentToSleigh(presentToPack);
-                //                                      Console.WriteLine($"Queued Elf {elf.Name}");
-                //                                      //Console.WriteLine($"Deliver {presentToPack.PresentType} Order {presentToPack.OrderId}");
-
-
-                //                                  }
-                //                                  finally
-                //                                  {
-                //                                      finished.Signal(); // Signal that the work item is complete.
-                //                                  }
-                //                              }
-                //                              , null);
             }
 
             WaitHandle.WaitAll(events.ToArray());
 
-
-
-            //finished.Signal(); // Signal that queueing is complete.
-            //finished.Wait(); // Wait for all work items to complete.
         }
-        //}
 
 
         private void GetElfs()

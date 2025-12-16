@@ -29,8 +29,6 @@ namespace Family_Aware_Delivery_Library
 
         public void DeliverPresentToSleigh(object present)
         {
-            //Console.WriteLine($">>>>>>>>>>> {Name} + {((Present)present).PresentType} + Order {((Present)present).OrderId}");
-
             Console.WriteLine($">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> {Name} + {((Present)present).PresentType}{((Present)present).OrderId} {Thread.CurrentThread.ManagedThreadId}");
 
             //Thread.Sleep(5000);
