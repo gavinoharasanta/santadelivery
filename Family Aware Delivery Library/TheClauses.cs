@@ -66,20 +66,12 @@ namespace Family_Aware_Delivery_Library
 
         public void ProcessPresentsToPack()
         {
-
             var events = new List<ManualResetEvent>();
-
-            //using (var finished = new CountdownEvent(1))
-            //{
-            //Present presentToPack = null;
-            //while (!presentsToPack.IsCompleted)
-
-
+ 
             int i = 0;
             foreach (Present presentToPack in presentsToPack.GetConsumingEnumerable())
             {
                 Console.WriteLine($"presentsToPack.Take() {presentToPack.PresentType}{presentToPack.OrderId} {Thread.CurrentThread.ManagedThreadId}");
-
 
                 bool waitingForElf = true;
 
@@ -87,23 +79,21 @@ namespace Family_Aware_Delivery_Library
                 {
                     if (elves.TryTake(out Elf elf, millisecondsTimeout: 25000))
                     {
-
-
                         waitingForElf = false;
+                        
                         Console.WriteLine($"*************************{elf.Name}");
 
                         var resetEvent = new ManualResetEvent(false);
                         ThreadPool.QueueUserWorkItem(arg =>
                                                     {
-                                                        //Console.WriteLine($"******************* QueueUserWorkItem {elf.Name} {presentToPack.PresentType}{presentToPack.OrderId}  {Thread.CurrentThread.ManagedThreadId}");
                                                         elf.DeliverPresentToSleigh(presentToPack);
-                                                        //Thread.Sleep(5000);
                                                         resetEvent.Set();
                                                     });
+
                         Console.WriteLine($"Queued Elf {elf.Name} {presentToPack.PresentType} Order {presentToPack.OrderId}");
+                        
                         events.Add(resetEvent);
                         //Console.WriteLine($"xxxxxxxxxxxxxxxxx POst QueueUserWorkItem {elf.Name} {presentToPack.PresentType}{presentToPack.OrderId}  {Thread.CurrentThread.ManagedThreadId}");
-
 
                     }
                 }
@@ -176,7 +166,6 @@ namespace Family_Aware_Delivery_Library
                     }
                 }
             }
-
 
             // distribute randomly to toy machines
             int i = 0;
