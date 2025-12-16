@@ -84,7 +84,7 @@ namespace Family_Aware_Delivery_Library
             {
                 Console.WriteLine($"presentsToPack.Take() {presentToPack.PresentType}{presentToPack.OrderId} {Thread.CurrentThread.ManagedThreadId}");
 
-
+                Console.WriteLine("test");
                 //try
                 //{
                 //    presentToPack = presentsToPack.Take();
