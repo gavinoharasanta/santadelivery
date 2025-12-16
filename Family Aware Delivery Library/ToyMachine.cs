@@ -43,7 +43,7 @@ namespace Family_Aware_Delivery_Library
                     continue; 
                 }
 
-                Thread.Sleep((int)toyOrder.PresentType * SantaUrgencySettings.SantaUrgencyLevel);
+                Thread.Sleep((int)toyOrder.PresentType * Utils.SantaUrgencyLevel);
                 presentsToPack.Add(new Present(toyOrder.PresentType, toyOrder.OrderId));
 
                 if (!toysCreated.ContainsKey(toyOrder.PresentType))

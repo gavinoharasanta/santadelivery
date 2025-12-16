@@ -20,7 +20,7 @@ namespace Family_Aware_Delivery_Library
         public Elf(string name, int speed, BlockingCollection<Elf> availableElfs, ConcurrentBag<FamilyToySack> familyToySacks, Sleigh sleigh, ConcurrentBag<Present> bin)
         {
             Name = name;
-            Speed = speed * SantaUrgencySettings.SantaUrgencyLevel;
+            Speed = speed * Utils.SantaUrgencyLevel;
             this.availableElfs = availableElfs;
             FamilyToySacks = familyToySacks;
             this.sleigh = sleigh;

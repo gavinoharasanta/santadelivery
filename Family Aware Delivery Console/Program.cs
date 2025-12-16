@@ -21,7 +21,10 @@ class Program
         theClauses.DistributeOrders();
         theClauses.ToyMachinesStartProcessing();
 
-        //ThreadPool.QueueUserWorkItem(new WaitCallback(CancelOrder), theClauses);
+        if (Utils.EarlyCancellation) // cancels at a random second
+        {
+            ThreadPool.QueueUserWorkItem(new WaitCallback(CancelOrder), theClauses);
+        }
 
         theClauses.ProcessPresentsToPack();
 

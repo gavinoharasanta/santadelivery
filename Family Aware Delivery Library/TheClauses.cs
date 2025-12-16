@@ -99,7 +99,7 @@ namespace Family_Aware_Delivery_Library
                 }
 
 
-                if (i == 10)
+                if (Utils.LateCancellation && i == 10) // cancels late
                 {
                     OnCancelOrder(new OrderEventArgs(Orders[0]));
                 }

@@ -14,18 +14,11 @@ namespace Family_Aware_Delivery_Library
 
     public static class Utils
     {
-        static object lockObj = new object();
+        public static bool EarlyCancellation = false;
 
-        public static void WriteMessage(string message, ConsoleColor colour)
-        {
-            lock (lockObj)
-            {
-                Console.ForegroundColor = colour;
-                Console.WriteLine("\t" + message);
-                Console.ForegroundColor = ConsoleColor.White;
+        public static bool LateCancellation = false;
 
-            }
-        }
+        public static int SantaUrgencyLevel = 500;
 
         public static List<Order> GenerateOrders(List<string> families, TheClauses theClauses)
         {
@@ -36,9 +29,9 @@ namespace Family_Aware_Delivery_Library
             foreach (string family in families)
             {
                 Dictionary<PresentTypes, int> toysOrdered = new Dictionary<PresentTypes, int>();
-                toysOrdered.Add(PresentTypes.A, 1);
+                toysOrdered.Add(PresentTypes.A, 2);
                 toysOrdered.Add(PresentTypes.B, 1);
-                toysOrdered.Add(PresentTypes.C, 1);
+                toysOrdered.Add(PresentTypes.C, 2);
                 toysOrdered.Add(PresentTypes.D, 1);
 
 

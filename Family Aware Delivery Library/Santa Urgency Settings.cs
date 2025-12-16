@@ -3,9 +3,9 @@
     public static class SantaUrgencySettings
     {
 
-		public static int SantaUrgencyLevel = 1000;
+		//public static int SantaUrgencyLevel = 1000;
 		
-        private static int presentCreationTime;
+  //      private static int presentCreationTime;
 
     }
 }
