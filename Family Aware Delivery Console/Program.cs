@@ -7,7 +7,6 @@ class Program
     {
         int noOfToyMachine = 2;
         List<string> families = new List<string>() { "Family1", "Family2", "Family3" };
-        //List<string> families = new List<string>() { "Family1", "Family2" };
 
 
         TheClauses theClauses = new TheClauses(noOfToyMachine);

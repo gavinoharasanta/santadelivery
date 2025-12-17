@@ -1,11 +1,11 @@
 ﻿using Family_Aware_Delivery_Library;
 
-namespace Family_Aware_Delivery.xUnit
+namespace Multi_Elf.xUnit
 {
-    public class PresentTests
+    public class PresentShould
     {
         [Fact]
-        public void Constructor_SetsProperties()
+        public void ConstructCorrectly()
         {
             var present = new Present(PresentTypes.ToyBall, 42);
 
